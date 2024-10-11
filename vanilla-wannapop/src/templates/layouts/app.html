@@ -1,0 +1,16 @@
+<div class="container p-4 mx-auto">
+  <div class="mb-4">
+    <a href="https://vitejs.dev" target="_blank">
+      <img src="vite.svg" class="logo" alt="Vite logo" />
+    </a>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+      <img src="src/assets/img/javascript.svg" class="logo vanilla" alt="JavaScript logo" />
+    </a>  
+  </div>
+  <div id="content">
+    {% block content %}{% endblock %}
+  </div>
+  <footer class="p-4">
+    <div>Author: <span class="fw-semibold">{{ author }}</span></div>
+  </footer>
+</div>

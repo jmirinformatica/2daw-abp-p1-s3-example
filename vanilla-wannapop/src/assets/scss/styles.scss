@@ -1,0 +1,51 @@
+// Import all of Bootstrap's CSS
+@import "bootstrap/scss/bootstrap";
+
+/* Navbar */
+.navbar {
+    background-color: $teal-200; /* Color teal-200 */
+}
+.navbar-brand, .navbar-nav .nav-link, .btn-outline-success {
+    color: $white !important;
+}
+.btn-outline-success:hover {
+    background-color: $teal-100;
+    border-color: $teal-100;
+}
+
+/* Sidebar de filtres */
+.list-group-item {
+    background-color: $teal-100;
+    border-color: $teal-200;
+}
+.list-group-item:hover {
+    background-color: $teal-300;
+    color: $white;
+}
+
+/* Dropdown d'ordenació */
+.form-select {
+    background-color: $teal-100;
+    border-color: $teal-200;
+    color: $teal-900;
+}
+.form-select:focus {
+    border-color: $teal-200;
+    box-shadow: 0 0 0 0.25rem rgba(0, 128, 128, 0.5); /* Variant de teal */
+}
+
+/* Productes */
+.card {
+    border-color: $teal-200;
+}
+.card-title {
+    color: $teal-900;
+}
+.card-footer {
+    background-color: $teal-100;
+}
+
+/* Footer */
+footer {
+    background-color: $teal-200;
+}
