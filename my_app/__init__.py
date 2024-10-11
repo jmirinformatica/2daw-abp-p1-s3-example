@@ -24,9 +24,6 @@ def configure_db(app):
     # Inicialitza SQLAlchemy
     db_manager.init_app(app)
 
-    # Inicialitza el login manager
-    login_manager.init_app(app)
-
     app.logger.info("Configuració de la base de dades aplicada")
 
 def create_app():
@@ -38,6 +35,9 @@ def create_app():
     # Configuració de la base de dades
     configure_db(app)
 
+    # Inicialitza el login manager
+    login_manager.init_app(app)
+    
     with app.app_context():
         from . import routes_main, routes_auth
 
