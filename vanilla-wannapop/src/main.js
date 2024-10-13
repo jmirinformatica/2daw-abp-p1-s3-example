@@ -9,7 +9,7 @@ console.log("App environment: " + process.env.APP_ENV)
 console.log("Debug mode: " + (process.env.APP_DEBUG ? "on" : "off"))
 
 // Router
-import createRouter from './lib/router.js'
+import router from './lib/router.js'
 
 import Home from './pages/home/home.js'
 import Counter from './pages/counter/counter.js'
@@ -21,4 +21,5 @@ const routes = {
     '/my-list': MyList,
 }
 
-createRouter('#app', 'a[route]', routes)
+router.setRoutes(routes)
+router.bootup()

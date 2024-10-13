@@ -1,49 +1,66 @@
-export default function createRouter(root, nav, routes) {
+export class Router {
+    
+    constructor(root, nav, routes={}) {
+      this.app = document.querySelector(root)
+      this.nav = nav
+      this.routes = routes
+    }
 
-    const app = document.querySelector(root);
-
-    const renderContent = (route) => {
+    setRoutes(routes) {
+        this.routes = routes
+    }
+    
+    renderContent(route) {
         // Route callbacks
-        app.innerHTML = routes[route].renderHTML()
-        if (routes[route].loadScript) {
-            routes[route].loadScript()
+        if (this.routes[route].renderHTML) {
+            // Render page
+            this.app.innerHTML = this.routes[route].renderHTML()
+            // Refresh navigate events
+            this.registerNavLinks()
         }
-        // Refresh navigate events
-        registerNavLinks();
-    };
+        if (this.routes[route].loadScript) {
+            // Execute JavaScript
+            this.routes[route].loadScript()
+        }
+    }
 
-    const navigate = (e) => {
-        const route = e.target.pathname;
-        window.history.pushState({}, "", route);
-        renderContent(route);
-    };
+    navigateTo(route) {
+        window.history.pushState({}, "", route)
+        this.renderContent(route)
+    }
 
-    const registerNavLinks = () => {
-        const links = document.querySelectorAll(nav);
+    registerNavLinks() {
+        const self = this
+        const links = document.querySelectorAll(this.nav)
         for(let i=0; i<links.length; i++) {
             links[i].addEventListener("click", (e) => {
-                e.preventDefault();
-                const { href } = e.target;
-                window.history.pushState({}, "", href);
-                navigate(e);
-            });
+                e.preventDefault()
+                const { href } = e.target
+                window.history.pushState({}, "", href)
+                self.navigateTo(e.target.pathname)
+            })
         }
-    };
+    }
 
-    const registerBrowserBackAndForth = () => {
+    registerBrowserBackAndForth = () => {
+        const self = this
         window.onpopstate = function (e) {
-            const route = window.location.pathname;
-            renderContent(route);
-        };
-    };
+            const route = window.location.pathname
+            self.renderContent(route)
+        }
+    }
 
-    const renderInitialPage = () => {
-        const route = window.location.pathname;
-        renderContent(route);
-    };
+    renderInitialPage() {
+        const route = window.location.pathname
+        this.renderContent(route)
+    }
 
-    (function bootup() {
-        registerBrowserBackAndForth();
-        renderInitialPage();        
-    })();
+    bootup() {
+        this.registerBrowserBackAndForth()
+        this.renderInitialPage()        
+    }
 }
+
+const router = new Router('#app', 'a[route]')
+
+export default router
