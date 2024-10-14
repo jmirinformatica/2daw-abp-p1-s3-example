@@ -17,12 +17,17 @@ import router from './lib/router.js'
 
 import home from './views/home/home.js'
 import counter from './views/counter/counter.js'
-import myList from './views/my-list/myList.js'
+import myList from './views/myList/myList.js'
+import photosList from './views/photos/photosList.js'
+import photosRead from './views/photos/photosRead.js'
 
 const routes = {
     '/': home,
     '/counter': counter,
     '/my-list': myList,
+    '/photos': photosList,
+    // TODO Router dynamic URL
+    '/photos/<id>': photosRead,
 }
 
 router.setRoutes(routes)

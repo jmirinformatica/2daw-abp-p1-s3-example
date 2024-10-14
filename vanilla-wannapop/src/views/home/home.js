@@ -1,6 +1,6 @@
 import logger from '../../lib/logger'
 // Nunjucks template engine
-import { render, renderString } from 'nunjucks'
+import { renderString } from 'nunjucks'
 import page from './home.html?raw'
 
 export default {
