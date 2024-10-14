@@ -16,14 +16,8 @@ export default defineConfig(({ command, mode }) => {
       '!(index).html',
     ],
     plugins: [
-      nunjucks({
-        // Definir les variables globals aquí
-        variables: {
-            '*': {
-                author: 'Profes DAW'
-            }
-        },
-      })
+      // https://github.com/Jax-p/vite-plugin-nunjucks
+      nunjucks()
     ]
   }
 })
