@@ -1,12 +1,13 @@
 import logger from '../../lib/logger'
 // Nunjucks template engine
-import { render } from 'nunjucks'
+import { renderString } from 'nunjucks'
+import page from './counter.html?raw'
 // Router
 import router from '../../lib/router'
 
 export default {
   renderHTML() {
-    return render('src/pages/counter/counter.html')
+    document.querySelector("#content").innerHTML = renderString(page)
   },
   loadScript() {
     logger.debug("Counter script")

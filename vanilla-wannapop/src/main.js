@@ -8,17 +8,21 @@ import * as bootstrap from 'bootstrap'
 console.log("App environment: " + process.env.APP_ENV)
 console.log("Debug mode: " + (process.env.APP_DEBUG ? "on" : "off"))
 
+// Layout
+import layout from './views/layouts/base.js'
+layout.renderHTML()
+
 // Router
 import router from './lib/router.js'
 
-import Home from './pages/home/home.js'
-import Counter from './pages/counter/counter.js'
-import MyList from './pages/my-list/myList.js'
+import home from './views/home/home.js'
+import counter from './views/counter/counter.js'
+import myList from './views/my-list/myList.js'
 
 const routes = {
-    '/': Home,
-    '/counter': Counter,
-    '/my-list': MyList,
+    '/': home,
+    '/counter': counter,
+    '/my-list': myList,
 }
 
 router.setRoutes(routes)

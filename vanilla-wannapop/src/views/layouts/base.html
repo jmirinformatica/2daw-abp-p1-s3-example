@@ -1,12 +1,19 @@
 <div class="container p-4 mx-auto">
-  <div class="mb-4">
+  <header class="mb-4">
     <a href="https://vitejs.dev" target="_blank">
       <img src="vite.svg" class="logo" alt="Vite logo" />
     </a>
     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
       <img src="src/assets/img/javascript.svg" class="logo vanilla" alt="JavaScript logo" />
-    </a>  
-  </div>
+    </a>
+    <div id="user">
+      {% if username %}
+      Hello <span class="text-decoration-underline ms-2">{{ username }}</span>!
+      {% else %}
+      Hello guest!
+      {% endif %}
+    </div>
+  </header>
   <div id="content">
     {% block content %}{% endblock %}
   </div>

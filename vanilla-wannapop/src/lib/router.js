@@ -1,9 +1,12 @@
 export class Router {
     
-    constructor(root, nav, routes={}) {
-      this.app = document.querySelector(root)
+    constructor(nav, routes={}) {
       this.nav = nav
       this.routes = routes
+    }
+
+    setNav() {
+        this.nav = nav
     }
 
     setRoutes(routes) {
@@ -14,7 +17,7 @@ export class Router {
         // Route callbacks
         if (this.routes[route].renderHTML) {
             // Render page
-            this.app.innerHTML = this.routes[route].renderHTML()
+            this.routes[route].renderHTML()
             // Refresh navigate events
             this.registerNavLinks()
         }
@@ -61,6 +64,6 @@ export class Router {
     }
 }
 
-const router = new Router('#app', 'a[route]')
+const router = new Router('a[route]')
 
 export default router

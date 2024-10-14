@@ -1,11 +1,12 @@
 import logger from '../../lib/logger'
 // Nunjucks template engine
-import { render, renderString } from 'nunjucks'
-import template from '../../templates/table.html?raw'
+import { renderString } from 'nunjucks'
+import page from './myList.html?raw'
+import template from '../table.html?raw'
 
 export default {
   renderHTML() {
-    return render('src/pages/my-list/myList.html')
+    document.querySelector("#content").innerHTML = renderString(page)
   },
   loadScript() {
     logger.debug("MyList script")
