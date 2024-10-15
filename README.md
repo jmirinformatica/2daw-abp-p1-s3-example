@@ -35,6 +35,8 @@ El sistema propi de rutes s'encarrega de mostrar les pàgines i actualitzar l'hi
 
 Les pàgines estan desades al directori `pages` i la generació de cada pàgina requereix de, com a mínim, dos fitxers: un **fitxer HTML** amb la plantilla de la pàgina i un **fitxer JS** amb la lògica de renderitzat i interacció (`renderHTML` i `loadScript`).
 
+Podem utilitzar el mètode `renderString` del motor de plantilles **Nunjucks** per agilitzar la generació estàtica de **pàgines** i la generació dinàmica de **components** dins de cada pàgina.
+
 #### Rutes
 
 La definició de les rutes i inicialització del sistema "multi-pàgina" està al fitxer [main.js](vanilla-wannapop/src/main.js). Cada cop que creem una nova pàgina, hem d'afegir la pàgina i definir la seva ruta en aquest fitxer.

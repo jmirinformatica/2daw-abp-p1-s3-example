@@ -15,16 +15,16 @@ layout.renderHTML()
 // Router
 import router from './lib/router.js'
 
-import home from './views/home/home.js'
-import counter from './views/counter/counter.js'
-import myList from './views/myList/myList.js'
-import photosList from './views/photos/photosList.js'
-import photosRead from './views/photos/photosRead.js'
+import home from './views/home/page.js'
+import counter from './views/counter/page.js'
+import authors from './views/authors/page.js'
+import photosList from './views/photos/pageList.js'
+import photosRead from './views/photos/pageRead.js'
 
 const routes = {
     '/': home,
     '/counter': counter,
-    '/my-list': myList,
+    '/authors': authors,
     '/photos': photosList,
     // TODO Router dynamic URL
     '/photos/<id>': photosRead,

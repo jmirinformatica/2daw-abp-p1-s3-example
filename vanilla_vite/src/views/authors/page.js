@@ -1,16 +1,17 @@
 import logger from '../../lib/logger'
 // Nunjucks template engine
 import { renderString } from 'nunjucks'
-import page from './myList.html?raw'
+import page from './page.html?raw'
 import template from '../table.html?raw'
 
 export default {
   renderHTML() {
+    logger.debug("Render authors page")
     document.querySelector("#content").innerHTML = renderString(page)
   },
   loadScript() {
-    logger.debug("MyList script")
-    const myList = [{
+    logger.debug("Render authors page component")
+    const authors = [{
       'name': 'Alfons',
       'role': 'Backend'
     },{
@@ -21,6 +22,6 @@ export default {
       'role': 'Full-stack'
     }]
     const list = document.querySelector('#list')
-    list.innerHTML = renderString(template, {items:myList})
+    list.innerHTML = renderString(template, {items:authors})
   }
 }

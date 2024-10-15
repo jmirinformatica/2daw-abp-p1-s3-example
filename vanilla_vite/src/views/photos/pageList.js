@@ -1,7 +1,7 @@
 import logger from '../../lib/logger'
 // Nunjucks template engine
 import { renderString } from 'nunjucks'
-import page from './photosList.html?raw'
+import page from './pageList.html?raw'
 import template from './_photos.html?raw'
 // API
 import photoService from '../../services/photoService'
