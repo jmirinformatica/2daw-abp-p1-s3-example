@@ -16,6 +16,8 @@ layout.renderHTML()
 import router from './lib/router.js'
 
 import home from './views/home/page.js'
+import login from './views/auth/login.js'
+import logout from './views/auth/logout.js'
 import counter from './views/counter/page.js'
 import authors from './views/authors/page.js'
 import photosList from './views/photos/pageList.js'
@@ -23,6 +25,8 @@ import photosRead from './views/photos/pageRead.js'
 
 const routes = {
     '/': home,
+    '/login': login,
+    '/logout': logout,
     '/counter': counter,
     '/authors': authors,
     '/photos': photosList,

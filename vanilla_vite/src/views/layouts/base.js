@@ -11,9 +11,10 @@ export default {
     document.querySelector("#app").innerHTML = renderString(layout, data)
   },
   refreshUser() {
-    logger.debug("Refresh layout...")    
+    logger.debug("Refresh layout...")
     const userDiv = document.querySelector('#user')
-    const data = {"username": "Maria"}
+    // TODO Get session data
+    const data = {"username": "FAKE"}
     userDiv.innerHTML = renderString(template, data)    
   }
 }

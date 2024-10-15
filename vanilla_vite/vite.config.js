@@ -9,6 +9,7 @@ export default defineConfig(({ command, mode }) => {
       'process.env.APP_ENV': JSON.stringify(env.APP_ENV),
       'process.env.APP_DEBUG': env.APP_DEBUG,
       'process.env.LOG_LEVEL': JSON.stringify(env.LOG_LEVEL),
+      'process.env.SESSION': JSON.stringify(env.SESSION),
       'process.env.API_URL': JSON.stringify(env.API_URL),
       // If you want to exposes all env variables, which is not recommended
       // 'process.env': env
