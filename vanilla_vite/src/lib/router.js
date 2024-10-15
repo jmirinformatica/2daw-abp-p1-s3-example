@@ -6,27 +6,54 @@ export class Router {
     }
 
     setNav() {
-        this.nav = nav
+      this.nav = nav
     }
 
     setRoutes(routes) {
-        this.routes = routes
+      this.routes = routes
     }
     
     renderContent(route) {
-        // Route callbacks
-        if (this.routes[route].renderHTML) {
-            // Render page
-            this.routes[route].renderHTML()
-            // Refresh navigate events
-            this.registerNavLinks()
+      let matchedRoute = undefined;
+      let params = {};
+  
+      // Comprovar si la ruta existeix com a clau (rutes estàtiques)
+      if (this.routes[route]) {
+        matchedRoute = this.routes[route];
+      } else {
+        // Comprovar rutes dinàmiques
+        for (let pattern in this.routes) {
+          if (pattern.includes('<')) {
+            // Convertir la ruta dinàmica en expressió regular
+            const regexPattern = pattern.replace(/<(\w+)>/g, "(?<$1>\\w+)");
+            const regex = new RegExp(`^${regexPattern}$`);
+            // Comprovar coincidència amb la ruta actual
+            const match = route.match(regex);
+            if (match) {
+              matchedRoute = this.routes[pattern];
+              params = match.groups; // Extreure els paràmetres dinàmics
+              break; // Sortir del bucle en trobar la coincidència
+            }
+          }
         }
-        if (this.routes[route].loadScript) {
-            // Execute JavaScript
-            this.routes[route].loadScript()
+      }
+  
+      // Si es troba una ruta coincident
+      if (matchedRoute) {
+        // Renderitzar el HTML
+        if (matchedRoute.renderHTML) {
+          matchedRoute.renderHTML(params); // Passar els paràmetres si n'hi ha
+          this.registerNavLinks(); // Refrescar esdeveniments de navegació
         }
-    }
-
+        // Executar el JavaScript
+        if (matchedRoute.loadScript) {
+          matchedRoute.loadScript(params); // Passar els paràmetres si n'hi ha
+        }
+      } else {
+        console.error(`Route not found: ${route}`);
+      }
+    }  
+    
     navigateTo(route) {
         window.history.pushState({}, "", route)
         this.renderContent(route)

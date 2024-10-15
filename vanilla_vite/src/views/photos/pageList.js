@@ -9,7 +9,7 @@ export default {
     document.querySelector("#content").innerHTML = renderString(page)
   },
   loadScript() {
-    // Llistat
+    // API call
     logger.debug("Photos list API request...")
     const url = process.env.API_URL + `/photos`
 		fetch(url, {
@@ -28,7 +28,6 @@ export default {
     })
     .catch((error) => {
       logger.debug(error)
-      // Mostrar missatge d'error a l'usuari/a
       alert("❌ Loading ERROR")
     })
   }

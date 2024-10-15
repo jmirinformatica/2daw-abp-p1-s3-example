@@ -5,15 +5,14 @@ import page from './pageRead.html?raw'
 import template from './_photo.html?raw'
 
 export default {
-  renderHTML() {
-    document.querySelector("#content").innerHTML = renderString(page)
+  renderHTML(params) {
+    const data = {"id": params.id}
+    document.querySelector("#content").innerHTML = renderString(page, data)
   },
-  loadScript() {
-    // TODO Get ID from URL
-    const queryString = window.location.search
-    const urlParams = new URLSearchParams(queryString)
-    const id = urlParams.get('id')
-    // Obtenir un recurs
+  loadScript(params) {
+    // Get ID from dynamic route
+    const id = params.id
+    // API call
     logger.debug("Photo API request...")
     const url = process.env.API_URL + `/photos/${id}`
 		fetch(url, {
@@ -25,7 +24,7 @@ export default {
     .then(response => response.json())
     .then((data) => {
       logger.debug("Photo API response OK")
-      let div = document.querySelector('#photos')
+      let div = document.querySelector('#photo')
       div.innerHTML = renderString(template, { 
         photo: data
       })
