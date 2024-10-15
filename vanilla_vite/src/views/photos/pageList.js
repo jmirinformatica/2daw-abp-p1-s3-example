@@ -29,7 +29,7 @@ export default {
     .catch((error) => {
       logger.debug(error)
       // Mostrar missatge d'error a l'usuari/a
-      alert("❌ Error carregant fotos")
+      alert("❌ Loading ERROR")
     })
   }
 }
