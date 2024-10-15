@@ -3,8 +3,6 @@ import logger from '../../lib/logger'
 import { renderString } from 'nunjucks'
 import page from './pageRead.html?raw'
 import template from './_photo.html?raw'
-// API
-import photoService from '../../services/photoService'
 
 export default {
   renderHTML() {
@@ -17,18 +15,25 @@ export default {
     const id = urlParams.get('id')
     // Obtenir un recurs
     logger.debug("Photo API request...")
-    photoService.getOne(id)
-      .then((data) => {
-        logger.debug("Photo API response OK")
-        let div = document.querySelector('#photos')
-        div.innerHTML = renderString(template, { 
-          photo: data
-        })
+    const url = process.env.API_URL + `/photos/${id}`
+		fetch(url, {
+			headers: {
+				"Accept": "application/json"
+			},
+			method: "GET",
+		})
+    .then(response => response.json())
+    .then((data) => {
+      logger.debug("Photo API response OK")
+      let div = document.querySelector('#photos')
+      div.innerHTML = renderString(template, { 
+        photo: data
       })
-      .catch((error) => {
-        logger.debug(error)
-        // Mostrar missatge d'error a l'usuari/a
-        alert("❌ Error carregant foto")
-      })
+    })
+    .catch((error) => {
+      logger.debug(error)
+      // Mostrar missatge d'error a l'usuari/a
+      alert("❌ Error carregant foto")
+    })
   }
 }
