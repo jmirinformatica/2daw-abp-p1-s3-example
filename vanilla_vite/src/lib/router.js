@@ -36,12 +36,16 @@ export class Router {
         const self = this
         const links = document.querySelectorAll(this.nav)
         for(let i=0; i<links.length; i++) {
-            links[i].addEventListener("click", (e) => {
-                e.preventDefault()
-                const { href } = e.target
-                window.history.pushState({}, "", href)
-                self.navigateTo(e.target.pathname)
-            })
+            if (!links[i].dataset.eventAdded) {
+                links[i].addEventListener("click", (e) => {
+                    e.preventDefault()
+                    const { href } = e.target
+                    window.history.pushState({}, "", href)
+                    self.navigateTo(e.target.pathname)
+                })
+                // Avoid duplicated events
+                links[i].dataset.eventAdded = true
+            }
         }
     }
 

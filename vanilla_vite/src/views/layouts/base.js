@@ -6,13 +6,14 @@ import template from './_user.html?raw'
 
 export default {
   renderHTML() {
-    logger.debug("Layout render...")
-    const data = { "author": "Profes DAW" }
+    logger.debug("Render layout...")
+    const data = { "developer": "Profes DAW" }
     document.querySelector("#app").innerHTML = renderString(layout, data)
   },
-  refresh() {
-    logger.debug("Refresh layout...")
+  refreshUser() {
+    logger.debug("Refresh layout...")    
+    const userDiv = document.querySelector('#user')
     const data = {"username": "Maria"}
-    document.querySelector('#user').innerHTML = renderString(template, data)
+    userDiv.innerHTML = renderString(template, data)    
   }
 }

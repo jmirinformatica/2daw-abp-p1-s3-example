@@ -1,23 +1,54 @@
-<div class="container p-4 mx-auto">
-  <header class="mb-4">
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="src/assets/img/javascript.svg" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <div id="user">
-      {% if username %}
-      Hello <span class="text-decoration-underline ms-2">{{ username }}</span>!
-      {% else %}
-      Hello guest!
-      {% endif %}
+<!-- Header -->
+<header id="header">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <div class="navbar-brand">
+        <a href="https://vitejs.dev" target="_blank">
+          <img src="vite.svg" class="logo" alt="Vite logo" />
+        </a>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+          <img src="src/assets/img/javascript.svg" class="logo vanilla" alt="JavaScript logo" />
+        </a>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a route class="nav-link" href="/">Inici</a>
+          </li>
+          <li class="nav-item">
+            <a route class="nav-link" href="/authors">Authors</a>
+            </li>
+          <li class="nav-item">
+            <a route class="nav-link" href="/counter">Counter</a>
+          </li>
+          <li class="nav-item">
+            <a route class="nav-link" href="/photos">Photos</a>
+          </li>
+        </ul>
+        <div id="user">
+          {% if username %}
+          Hello <span class="text-decoration-underline ms-2">{{ username }}</span>!
+          <a route class="btn btn-secondary ms-4" href="/logout">Logout</a>
+          {% else %}
+          <a route class="btn btn-primary" href="/login">Login</a>
+          {% endif %}
+        </div>
+      </div>
     </div>
-  </header>
-  <div id="content">
-    {% block content %}{% endblock %}
-  </div>
-  <footer class="p-4">
-    <div>Author: <span class="fw-semibold">{{ author }}</span></div>
-  </footer>
+  </nav>
+</header>
+
+<!-- Content -->
+<div id="content" class="container mt-4">
+
 </div>
+
+<!-- Footer -->
+<footer class="text-center text-lg-start mt-5">
+  <div class="text-center p-3">
+    🄯 2024 <span class="fw-semibold">{{ developer }}</span>
+  </div>
+</footer>
