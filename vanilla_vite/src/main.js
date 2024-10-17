@@ -30,7 +30,7 @@ const routes = {
     '/counter': counter,
     '/authors': authors,
     '/photos': photosList,
-    // TODO Router dynamic URL
+    // Dynamic route with params
     '/photos/<id>': photosRead,
 }
 
