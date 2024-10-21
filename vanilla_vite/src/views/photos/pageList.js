@@ -20,10 +20,12 @@ export default {
 		})
     .then(response => response.json())
     .then((data) => {
-      logger.debug("Photos list API response OK")
+      logger.debug("Photos list API response OK")      
+      const maxSize = 24
       let list = document.querySelector('#photos')
       list.innerHTML = renderString(template, { 
-        photos: data
+        // Work-around when API has no pagination!!!
+        photos: data.length > maxSize ? data.slice(0, maxSize) : data
       })
     })
     .catch((error) => {
