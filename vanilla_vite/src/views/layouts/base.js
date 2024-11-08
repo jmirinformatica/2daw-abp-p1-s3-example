@@ -12,14 +12,14 @@ export default {
   },
   refreshUser() {
     logger.debug("Refresh layout using Nunjucks...")
-    const userDiv = document.querySelector('#user')
+    const userDiv = document.querySelector('#userMenu')
     // TODO Get session data
     const data = { "username": "FAKE" }
     userDiv.innerHTML = renderString(template, data)    
   },
   refreshUserUsingDOM() {
     logger.debug("Refresh layout using DOM...")
-    const userDiv = document.querySelector('#user')
+    const userDiv = document.querySelector('#userMenu')
     // TODO Get session data
     const data = { "username": "FAKE" }  
     // Reset
