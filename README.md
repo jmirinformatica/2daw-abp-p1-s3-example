@@ -1,6 +1,6 @@
 # 2daw-abp-p1-s2-example
 
-Exemple de suport per l'sprint 2 del projecte 1 de 2n de DAW.
+Exemple de suport per l'sprint  del projecte 1 de 2n de DAW.
 
 ## Setup
 
@@ -52,9 +52,7 @@ Per desactivar l'entorn:
 
 ### Base de dades
 
-La base de dades SQLite és dins de la carpeta [sqlite](./sqlite) s'ha de dir `database.db`, tot i que es pot configurar un nom diferent al fitxer de configuració. S'ha creat amb l'script [database.sql](./sqlite/database.sql). Aquest script conté un usuari de prova:
-
-* `joe@test.cat` amb la contrasenya `patata`.
+La base de dades SQLite és dins de la carpeta [sqlite](./sqlite) s'ha de dir `database.db`, tot i que es pot configurar un nom diferent al fitxer de configuració. Es pot crear amb l'script [database.sql](./sqlite/database.sql) o fent una copia de `database.db.initial`.
 
 ### Fitxer de configuració
 
