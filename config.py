@@ -17,4 +17,6 @@ class Config:
 
     CONTACT_ADDR = environ.get('CONTACT_ADDR')
 
-    EXTERNAL_URL = environ.get('EXTERNAL_URL')
+    # debug toolbar
+    # https://stackoverflow.com/questions/63116419/evaluate-boolean-environment-variable-in-python
+    DEBUG_TB_ENABLED = environ.get('DEBUG_TB_ENABLED', "false").lower() == "true"

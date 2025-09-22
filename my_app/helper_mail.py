@@ -15,9 +15,6 @@ class MailManager:
         # els missatges de contacte s'envien a aquesta adreça
         self.contact_addr = app.config.get('CONTACT_ADDR')
 
-        # URL del servidor web
-        self.external_url = app.config.get('EXTERNAL_URL')
-
     # https://realpython.com/python-send-email/#option-2-using-starttls
     def send_contact_msg(self, user, msg):
 
@@ -26,7 +23,7 @@ class MailManager:
         
         {msg}
 
-        Enviat des de {self.external_url}        
+        Salut!        
         """
 
         self.__send_mail(

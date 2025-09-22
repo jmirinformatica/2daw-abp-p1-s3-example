@@ -18,5 +18,7 @@
 		</tr>
 		{% endfor %}
 	</table>
-	<a href="/items/create">Crear un nou item</a>
+	{% if current_user.is_editor() %}
+		<a href="/items/create">Crear un nou item</a>
+	{% endif %}
 {% endblock %}
