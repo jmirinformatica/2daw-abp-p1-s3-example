@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, url_for, render_template, current_app, flash
+from flask import Blueprint, redirect, url_for, render_template, current_app, request
 from flask_login import current_user, login_required
 from .models import Item, Store
 from .forms import ItemForm, DeleteForm, ContactForm
@@ -33,13 +33,20 @@ def contact():
 @login_required
 @hr.require_view_permission.require(http_exception=403)
 def items_list():
-    # select amb join que retorna una llista de resultats
-    items_with_stores = db.session.query(Item, Store).join(Store).order_by(Item.id.asc()).all()
-    # depuració
-    count = len(items_with_stores)
-    current_app.logger.info(f"Hi ha {count} items a la BD")
-    # missatges flash
-    flash(f"Hi ha {count} items disponibles", "info")
+    search = request.args.get('search')
+    page = request.args.get('page', 1, type=int)
+    per_page = 10 # Number of items per page
+    if search:
+        # Filter using query param
+        my_filter = Item.nom.like('%' + search + '%')
+        query = db.session.query(Item, Store).join(Store).filter(my_filter).order_by(Item.id.asc())
+    else:
+        # No filter
+        query = db.session.query(Item, Store).join(Store).order_by(Item.id.asc())
+
+    # paginació
+    items_with_stores = query.paginate(page=page, per_page=per_page)
+
     # mostrar pàgina
     return render_template('items_list.html', items_with_stores = items_with_stores)
 
