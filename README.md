@@ -1,4 +1,4 @@
-# 2daw-abp-p1-s2-example
+# 2daw-abp-p1-s3-example
 
 Exemple de suport per l'sprint 3 del projecte 1 de 2n de DAW.
 
@@ -56,6 +56,8 @@ La base de dades SQLite és dins de la carpeta [sqlite](./sqlite) s'ha de dir `d
 
 * `ed@test.cat` amb la contrasenya `patata` i el rol **editor**.
 * `vi@test.cat` amb la contrasenya `patata` i el rol **viewer**.
+
+L'script `more_data.sql` inclou més inserts a les taules de stores i items.
 
 ### Fitxer de configuració
 
