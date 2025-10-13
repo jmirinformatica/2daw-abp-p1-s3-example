@@ -19,7 +19,10 @@ def configure_db(app):
     app.logger.info("Database: " + sqlite_file_path)
 
     # paràmetre que farà servir SQLAlchemy per a connectar-se a la base de dades
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + sqlite_file_path
+    # app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + sqlite_file_path
+
+    # mysql a Aiven... hauria de llegir-ho de la configuració
+    app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://avnadmin:?@mysql-205e1b73-insjoaquimmir-aafe.b.aivencloud.com:26737/defaultdb"
 
     # mostre als logs les ordres SQL que s'executen
     # TODO: llegir de la configuració
